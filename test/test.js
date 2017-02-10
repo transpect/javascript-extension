@@ -1,3 +1,3 @@
 // a little example...
 
-print('<root>Hello World from File</root>');
+print('<root>hello world</root>');
