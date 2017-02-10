@@ -10,8 +10,8 @@
           
   <p:output port="result"/>
 
-  <p:option name="href"/>
-    
+  <p:option name="href" select="'test/test.js'"/>
+  
   <p:import href="javascript-declaration.xpl"/>
   
   <tr:javascript>
