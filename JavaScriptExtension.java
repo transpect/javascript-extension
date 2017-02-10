@@ -97,7 +97,6 @@ public class JavaScriptExtension extends DefaultStep
     private static String getJSCodeFromFile(RuntimeValue href){
         String jscode = "";
         Path path = FileSystems.getDefault().getPath(href.getString()).toAbsolutePath();
-        System.out.println("[info] attempt to load: " + path.toString());
         try{
             jscode = new String(Files.readAllBytes(path));
         }catch(Exception e) {
@@ -125,7 +124,6 @@ public class JavaScriptExtension extends DefaultStep
         engine.getContext().setWriter(pw);
         engine.eval(jscode);
         output = sw.getBuffer().toString();
-        System.out.println("[info] script output: " + output);
         return output;
     }
     public static String runNodeJS(String jscode) throws NodeException, IOException, InterruptedException, JavaScriptException {
