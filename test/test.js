@@ -1,0 +1,3 @@
+// a little example...
+
+print('root>Hello World from File</root>');
