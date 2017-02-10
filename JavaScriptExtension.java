@@ -71,7 +71,7 @@ public class JavaScriptExtension extends DefaultStep
         super.run();
         RuntimeValue href = getOption(new QName("href"));
         String jscode = getJSCode(source, href, runtime);
-        String output = "";
+        String output;
         try{
             output = runJS(jscode);
             result.write(createXMLOutput(output, true, runtime));
@@ -116,14 +116,13 @@ public class JavaScriptExtension extends DefaultStep
         return jscode;
     }
     private static String runJS(String jscode) throws ScriptException{
-        String output = "";
         ScriptEngineManager factory = new ScriptEngineManager();
         ScriptEngine engine = factory.getEngineByName("nashorn");
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         engine.getContext().setWriter(pw);
         engine.eval(jscode);
-        output = sw.getBuffer().toString();
+        String output = sw.getBuffer().toString().trim();
         return output;
     }
     public static String runNodeJS(String jscode) throws NodeException, IOException, InterruptedException, JavaScriptException {
@@ -144,8 +143,7 @@ public class JavaScriptExtension extends DefaultStep
                     throw new NodeException(ee.getCause());
                 }
             }
-            String output = new String(scriptOutput.toByteArray());
-            System.out.print(output);
+            String output = new String(scriptOutput.toByteArray()).trim();
             return output;
         } finally {
             script.close();
