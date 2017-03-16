@@ -1,3 +1,5 @@
+package io.transpect.calabash.extensions;
+
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
